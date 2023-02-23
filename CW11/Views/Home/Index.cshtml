@@ -1,0 +1,77 @@
+﻿@using CW11.Models.Enum
+@using CW11.DataAccessLayer
+@model List<CW11.Models.ProductModel>
+@{
+    ViewData["Title"] = "CW11";
+}
+
+<div class="card">
+    <div class="row">
+        <div class="col-6">
+            <h3>Laptop Category</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Color</th>
+                        <th>Model</th>
+                        <th>Brand</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ProductRepository.Products)
+                    {
+                        if ((Convert.ToString(item.Category) == Convert.ToString(Category.Laptop)))
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Color</td>
+                                <td>@item.Model</td>
+                                <td>@item.Brand</td>
+                                <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Update" class="btn btn-warning">ویرایش</a></td>
+                                <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Delete" class="btn btn-danger">حذف</a></td>
+                                </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h3>Mobile Category</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Color</th>
+                        <th>Model</th>
+                        <th>Brand</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ProductRepository.Products)
+                    {
+                        if ((Convert.ToString(item.Category) == Convert.ToString(Category.Mobile)))
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Color</td>
+                                <td>@item.Model</td>
+                                <td>@item.Brand</td>
+                                <td>
+                                    <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Update" class="btn btn-warning">ویرایش</a></td>
+                                    <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Delete" class="btn btn-danger">حذف</a></td>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@using CW11.Models.Enum
+@model ProductModel
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Id" class="form-label" style="display: none">Id</label>
+        <input asp-for="Id" type="text" class="form-control" id="exampleInputEmail1" style="display: none">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" type="text" class="form-control" id="exampleInputEmail1">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Color" class="form-label">Color</label>
+        <input asp-for="Color" type="text" class="form-control" id="exampleInputEmail1">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Model" class="form-label">Model</label>
+        <input asp-for="Model" type="text" class="form-control" id="exampleInputEmail1">
+    </div>
+    <div class="mb-3">
+        @*<label asp-for="Brand">Brand</label>
+        <select asp-for="@Model.Brand" @*asp-items="@Html.EnumDropDownListFor(model => model.MyEnumProperty)"*@>
+        @*</select>*@
+        <label asp-for="Brand" class="form-label">Brand</label>
+        <input asp-for="Brand" type="text" class="form-control" id="exampleInputEmail1">
+    </div>
+    <button asp-route-id="@Model.Id" asp-controller="Storage" asp-action="Update" type="submit" class="btn btn-primary">Submit</button>
+</form>
