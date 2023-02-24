@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "CW11";
 }
+<a class="btn btn-primary" asp-controller="Storage" asp-action="Create">ایجاد محصول جدید</a>
 
 <div class="card">
     <div class="row">
@@ -33,7 +34,7 @@
                                 <td>@item.Brand</td>
                                 <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Update" class="btn btn-warning">ویرایش</a></td>
                                 <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Delete" class="btn btn-danger">حذف</a></td>
-                                </tr>
+                            </tr>
                         }
                     }
                 </tbody>
@@ -64,8 +65,8 @@
                                 <td>@item.Model</td>
                                 <td>@item.Brand</td>
                                 <td>
-                                    <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Update" class="btn btn-warning">ویرایش</a></td>
-                                    <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Delete" class="btn btn-danger">حذف</a></td>
+                                <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Update" class="btn btn-warning">ویرایش</a></td>
+                                <td><a asp-route-id="@item.Id" asp-controller="Storage" asp-action="Delete" class="btn btn-danger">حذف</a></td>
                                 </td>
                             </tr>
                         }

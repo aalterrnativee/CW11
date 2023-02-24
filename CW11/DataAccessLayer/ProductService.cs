@@ -1,12 +1,25 @@
-﻿using CW11.Models;
+﻿using CW11.DataAccessLayer.Extensions;
+using CW11.Models;
 using CW11.Models.Enum;
 
 namespace CW11.DataAccessLayer
 {
     public class ProductService : IProductService
     {
+        public static int LastId { get; set; }
+
         public void Create(ProductModel product)
         {
+            if (product.Id == 0)
+            {
+                product.Id = ++LastId;
+            }
+            product.AddedDate = DateTime.Now;
+
+            var result = DateTimeExtensions.ToPersianDateTime(product.AddedDate);
+
+            File.WriteAllText("C:\\Users\\alter\\OneDrive\\Desktop\\CW11\\CW11\\Date.txt", result);
+
             ProductRepository.Products.Add(product);
         }
 

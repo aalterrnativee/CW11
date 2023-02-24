@@ -16,6 +16,20 @@ namespace CW11.Controllers
             return View(result);
         }
 
+        public IActionResult Create()
+        {
+            //var categoryList = Enum.GetValues(typeof(Category)).OfType<Category>()
+            //    .Select(m => new { Text = m.ToString(), Value = (int)m }).ToList();
+            return View(new ProductModel());
+        }
+
+        [HttpPost]
+        public IActionResult Create(ProductModel product)
+        {
+            _productService.Create(product);
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Update(int id)
         {
             //var categories = new List<Category>();

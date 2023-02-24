@@ -1,6 +1,6 @@
 ﻿namespace CW11.Models.Enum
 {
-    enum Brand
+    public enum Brand
     {
         Samsung,
         Lenovo,

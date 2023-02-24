@@ -1,0 +1,49 @@
+﻿@using CW11.Models.Enum
+@model ProductModel
+
+<form method="post" asp-controller="Storage" asp-action="Create">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Color" class="form-label">Color</label>
+        <input asp-for="Color" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Color">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Model" class="form-label">Model</label>
+        <input asp-for="Model" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Model">
+    </div>
+    <div class="mb-3">
+        Category
+        @{
+            var categoryList = Enum.GetValues(typeof(Category)).OfType<Category>()
+            .Select(m => new SelectListItem() { Text = m.ToString(), Value = m.ToString() }).ToList();
+        }
+        <select asp-for="Category" class="form-control" asp-items="@categoryList">
+            <option disabled selected>
+                دسته بندی کتگوری را انتخاب کنید
+            </option>
+        </select>
+        @*@Html.DropDownList("EmpSex", new SelectList(categoryList, "Value", "Text", Model.Category))*@
+    </div>
+    <div class="mb-3">
+        Brand
+        @{
+            var brandList = Enum.GetValues(typeof(Brand)).OfType<Brand>()
+            .Select(m => new SelectListItem() { Text = m.ToString(), Value = m.ToString() }).ToList();
+        }
+        <select asp-for="Brand" class="form-control" asp-items="@brandList">
+            <option disabled selected>
+                دسته بندی برند را انتخاب کنید
+            </option>
+        </select>
+        @* @{
+        var brandList = Enum.GetValues(typeof(Brand)).OfType<Brand>()
+        .Select(m => new { Text = m.ToString(), Value = (int)m }).ToList();
+        }
+        @Html.DropDownList("EmpSex", new SelectList(brandList, "Value", "Text", Model.Brand))*@
+    </div>
+
+    <button type="submit" class="btn btn-success">ثبت</button>
+</form>

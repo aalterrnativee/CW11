@@ -1,4 +1,6 @@
-﻿namespace CW11.Models
+﻿using CW11.Models.Enum;
+
+namespace CW11.Models
 {
     public class ProductModel
     {
@@ -6,7 +8,8 @@
         public string Name { get; set; }
         public string Color { get; set; }
         public string Model { get; set; }
-        public System.Enum Brand { get; set; }
-        public System.Enum Category { get; set; }
+        public Brand Brand { get; set; }
+        public Category Category { get; set; }
+        public DateTime AddedDate { get; set; }
     }
 }
